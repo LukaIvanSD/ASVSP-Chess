@@ -1,1 +1,5 @@
 asvsp-architecture
+asvsp-project
+Airflow/logs/
+Airflow/plugins/
+Airflow/files/chessData/

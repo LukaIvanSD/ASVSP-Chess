@@ -1,0 +1,42 @@
+networks:
+  asvsp-chess-project:
+    name: asvsp-chess-project
+    external: true
+
+services:
+  mongodb:
+    image: mongo:8.2.3-noble
+    container_name: mongodb
+    ports:
+      - 27017:27017
+    env_file:
+      - .env
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_ROOT_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_ROOT_PASSWORD}
+    volumes:
+      - mongodb_data:/data/db
+    networks:
+      - asvsp-chess-project
+  mongo-express:
+    image: mongo-express:1.0.0
+    container_name: mongo-express
+    ports:
+      - 8111:8081
+    env_file:
+      - .env
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: ${MONGO_ROOT_USERNAME}
+      ME_CONFIG_MONGODB_ADMINPASSWORD: ${MONGO_ROOT_PASSWORD}
+      ME_CONFIG_MONGODB_SERVER: mongodb
+      ME_CONFIG_BASICAUTH: true
+      ME_CONFIG_BASICAUTH_USERNAME: ${ME_WEB_USERNAME}
+      ME_CONFIG_BASICAUTH_PASSWORD: ${ME_WEB_PASSWORD}
+    depends_on:
+      - mongodb
+    networks:
+      - asvsp-chess-project
+
+volumes:
+  mongodb_data:
+    driver: local

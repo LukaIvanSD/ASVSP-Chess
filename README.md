@@ -52,7 +52,7 @@ Glavni ciljevi projekta su:
 
 Ovaj projekat koristi **više komplementarnih šahovskih dataset-ova u PGN formatu**, koji zajedno omogućavaju analizu istorijskih trendova. Svi dataset-ovi sadrže partije igrača visokog rejtinga (≈2400+), ali se razlikuju po izvoru, tipu partija i dostupnosti dodatnih metapodataka.
 
-Link do **`dataseta https://www.kaggle.com/datasets/chessmontdb/chessmont-big-dataset`**
+Link do dataseta **`[https://www.kaggle.com/datasets/chessmontdb/chessmont-big-dataset]`**(https://www.kaggle.com/datasets/chessmontdb/chessmont-big-dataset)
 
 ---
 
