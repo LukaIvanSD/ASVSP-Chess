@@ -12,7 +12,7 @@ echo ">> Starting up HDFS"
 docker compose -f Hadoop/docker-compose.yml up -d
 
 echo ">> Starting up Apache Spark"
-docker compose -f Spark/docker-compose.yml up --build -d
+docker compose -f Spark/docker-compose.yml up -d
 
 echo ">> Starting up MongoDB"
 docker compose -f MongoDB/docker-compose.yml up -d
@@ -21,7 +21,7 @@ echo ">> Starting up Metabase"
 docker compose -f Metabase/docker-compose.yml up -d
 
 echo ">> Starting up Airflow"
-docker compose -f Airflow/docker-compose.yml up --build -d
+docker compose -f Airflow/docker-compose.yml up -d
 
 echo ">> Starting up Kafka"
 docker compose -f Kafka/docker-compose.yml up -d
@@ -37,6 +37,10 @@ echo "> Setting up services"
 echo ">> Setting up Airflow objects"
 cmd='bash -c "/opt/airflow/config/setupObjects.sh"'
 docker exec -it airflow-airflow-apiserver-1 $cmd
+
+echo ">> Setting up Kafka objects"
+cmd='bash -c "/home/config/setupObjects.sh"'
+docker exec -it kafka-broker1-1 $cmd
 
 if [[ $REPLY =~ ^[Yy]$ ]]
 then

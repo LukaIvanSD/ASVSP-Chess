@@ -45,7 +45,14 @@ airflow connections add 'LOCAL_FS_FILES' \
         "extra": "{ \"path\": \"/opt/airflow/files\"}"
     }'
 
+airflow connections add 'flink_http_default' \
+    --conn-json '{
+        "conn_type": "http",
+        "host": "flink-jobmanager-1",
+        "port": 8081
+    }'
+
 # Set up variables
 echo ">> Setting up airflow variables"
 airflow variables set HDFS_DEFAULT_FS "hdfs://namenode:9000"
-#airflow variables set MONGO_URI "mongodb://${MONGO_USER}:${MONGO_PASSWORD}@${MONGO_HOST}:${MONGO_PORT}"
+airflow variables set MONGO_URI "mongodb://${MONGO_USER}:${MONGO_PASSWORD}@${MONGO_HOST}:${MONGO_PORT}"

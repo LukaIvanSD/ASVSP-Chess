@@ -1,4 +1,8 @@
 version: "2.2"
+networks:
+  asvsp-chess-project:
+    name: asvsp-chess-project
+    external: true
 services:
   jobmanager:
     #image: flink:2.2.0-scala_2.12
@@ -6,13 +10,18 @@ services:
     ports:
       - "8081:8081"
     command: jobmanager
+    volumes:
+      - ./examples:/opt/flink/jobs
     environment:
       - |
         FLINK_PROPERTIES=
         jobmanager.rpc.address: jobmanager
+    networks:
+      - asvsp-chess-project
 
   taskmanager:
-    image: flink:1.20.3
+    #image: flink:1.20.3
+    build: .
     depends_on:
       - jobmanager
     command: taskmanager
@@ -22,6 +31,8 @@ services:
         FLINK_PROPERTIES=
         jobmanager.rpc.address: jobmanager
         taskmanager.numberOfTaskSlots: 2
+    networks:
+      - asvsp-chess-project
   #sql-client:
   #  image: flink:2.2.0-scala_2.12
   #  command: bin/sql-client.sh

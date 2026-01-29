@@ -17,8 +17,8 @@ def load_raw_data():
     def load_data():
         hdfs_hook = WebHDFSHook(webhdfs_conn_id="HDFS_CONNECTION")
 
-        local_source = "files/chessData/lichess.pgn"
-        hdfs_destination = "/raw_data/lichess.pgn"
+        local_source = "files/chessData/lichess_sample.pgn"
+        hdfs_destination = "/raw_data/lichess_sample.pgn"
         hdfs_hook.load_file(
             source=local_source, destination=hdfs_destination, overwrite=True
         )

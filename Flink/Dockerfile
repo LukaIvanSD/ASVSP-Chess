@@ -14,6 +14,15 @@ RUN wget -P /opt/flink/lib \
     https://repo.maven.apache.org/maven2/org/apache/flink/flink-connector-mongodb/${mongo_version}/flink-connector-mongodb-${mongo_version}.jar
 
 
+ARG mongo_driver_version=4.11.1
+RUN wget -P /opt/flink/lib \
+    https://repo.maven.apache.org/maven2/org/mongodb/mongodb-driver-sync/${mongo_driver_version}/mongodb-driver-sync-${mongo_driver_version}.jar && \
+    wget -P /opt/flink/lib \
+    https://repo.maven.apache.org/maven2/org/mongodb/mongodb-driver-core/${mongo_driver_version}/mongodb-driver-core-${mongo_driver_version}.jar && \
+    wget -P /opt/flink/lib \
+    https://repo.maven.apache.org/maven2/org/mongodb/bson/${mongo_driver_version}/bson-${mongo_driver_version}.jar
+
+
 
 RUN mkdir -p /opt/flink/plugins/flink-hdfs
 RUN wget -P /opt/flink/plugins/flink-hdfs \

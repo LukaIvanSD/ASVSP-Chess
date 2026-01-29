@@ -11,18 +11,21 @@ from airflow.providers.apache.spark.operators.spark_submit import SparkSubmitOpe
     max_active_runs=1,
     catchup=False,
 )
-def test_connection():
-        test = SparkSubmitOperator(
-        task_id="test_spark_connection_task",
-        application="/opt/airflow/files/spark/test.py",
+def transform_raw_data():
+
+    HDFS_DEFAULT_FS = Variable.get("HDFS_DEFAULT_FS")
+
+    prepare_initial_data = SparkSubmitOperator(
+        task_id="prepare_initial_data",
+        application="/opt/airflow/files/spark/testic.py",
         conn_id="SPARK_CONNECTION",
         verbose=False,
-        env_vars={
-            "PYSPARK_PYTHON": "/home/airflow/.local/bin/python3",
-            "PYSPARK_DRIVER_PYTHON": "/home/airflow/.local/bin/python3"
-        }
-
+        application_args=[
+            f"{HDFS_DEFAULT_FS}/raw_data/lichess_sample.pgn",
+            f"{HDFS_DEFAULT_FS}/transformed_data_sample",
+        ],
     )
+    prepare_initial_data
 
 
-test_connection()
+transform_raw_data()
