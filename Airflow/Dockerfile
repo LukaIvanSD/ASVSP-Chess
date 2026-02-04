@@ -41,30 +41,6 @@ RUN mkdir -p "${SPARK_EXTRA_JARS_DIR}"
 # ---- Install curl (if not present) ----
 RUN apt-get update && apt-get install -y curl && rm -rf /var/lib/apt/lists/*
 
-# ---- Download MongoDB Spark Connector ----
-
-# Mongo Spark Connector
-RUN curl -fL \
-  https://repo1.maven.org/maven2/org/mongodb/spark/mongo-spark-connector_2.12/10.2.0/mongo-spark-connector_2.12-10.2.0.jar \
-  -o /opt/spark/jars/mongo-spark-connector_2.12-10.2.0.jar
-
-# MongoDB Java Driver dependencies
-RUN curl -fL \
-  https://repo1.maven.org/maven2/org/mongodb/mongodb-driver-sync/4.8.2/mongodb-driver-sync-4.8.2.jar \
-  -o /opt/spark/jars/mongodb-driver-sync-4.8.2.jar
-
-RUN curl -fL \
-  https://repo1.maven.org/maven2/org/mongodb/mongodb-driver-core/4.8.2/mongodb-driver-core-4.8.2.jar \
-  -o /opt/spark/jars/mongodb-driver-core-4.8.2.jar
-
-RUN curl -fL \
-  https://repo1.maven.org/maven2/org/mongodb/bson/4.8.2/bson-4.8.2.jar \
-  -o /opt/spark/jars/bson-4.8.2.jar
-# ---- Fix permissions ----
-RUN chown root:root /opt/spark/jars/mongo-spark-connector_2.12-10.2.0.jar
-RUN chown root:root /opt/spark/jars/mongodb-driver-sync-4.8.2.jar
-RUN chown root:root /opt/spark/jars/mongodb-driver-core-4.8.2.jar
-RUN chown root:root /opt/spark/jars/bson-4.8.2.jar
 
 # Environment
 ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
@@ -73,6 +49,8 @@ ENV PATH=$PATH:$SPARK_HOME/bin
 USER airflow
 
 RUN pip install -r requirements.txt
+
+RUN pip install kafka-python==2.0.2
 
 USER airflow
 

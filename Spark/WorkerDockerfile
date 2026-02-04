@@ -1,0 +1,20 @@
+FROM bde2020/spark-worker:3.0.1-hadoop3.2
+
+USER root
+
+RUN chmod +x /worker.sh
+
+RUN mkdir -p /opt/spark/jars/
+
+# Mongo Spark Connector i Java Driver
+RUN curl -fL https://repo1.maven.org/maven2/org/mongodb/spark/mongo-spark-connector_2.12/10.2.0/mongo-spark-connector_2.12-10.2.0.jar \
+    -o /opt/spark/jars/mongo-spark-connector_2.12-10.2.0.jar && \
+    curl -fL https://repo1.maven.org/maven2/org/mongodb/mongodb-driver-sync/4.8.2/mongodb-driver-sync-4.8.2.jar \
+    -o /opt/spark/jars/mongodb-driver-sync-4.8.2.jar && \
+    curl -fL https://repo1.maven.org/maven2/org/mongodb/mongodb-driver-core/4.8.2/mongodb-driver-core-4.8.2.jar \
+    -o /opt/spark/jars/mongodb-driver-core-4.8.2.jar && \
+    curl -fL https://repo1.maven.org/maven2/org/mongodb/bson/4.8.2/bson-4.8.2.jar \
+    -o /opt/spark/jars/bson-4.8.2.jar
+
+CMD ["/bin/sh", "-c", "/worker.sh"]
+

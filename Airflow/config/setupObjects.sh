@@ -51,6 +51,14 @@ airflow connections add 'flink_http_default' \
         "host": "flink-jobmanager-1",
         "port": 8081
     }'
+airflow connections add 'SPARK_SSH' \
+  --conn-json '{
+    "conn_type": "ssh",
+    "host": "spark-master",
+    "port": 22,
+    "login": "root",
+    "password": "root"
+  }'
 
 # Set up variables
 echo ">> Setting up airflow variables"
