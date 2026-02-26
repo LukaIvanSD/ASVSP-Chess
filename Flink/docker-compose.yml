@@ -25,12 +25,12 @@ services:
     depends_on:
       - jobmanager
     command: taskmanager
-    scale: 1
+    scale: 2
     environment:
       - |
         FLINK_PROPERTIES=
         jobmanager.rpc.address: jobmanager
-        taskmanager.numberOfTaskSlots: 2
+        taskmanager.numberOfTaskSlots: 3
     networks:
       - asvsp-chess-project
   #sql-client:

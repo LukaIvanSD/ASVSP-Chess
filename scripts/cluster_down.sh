@@ -10,7 +10,7 @@ then
     docker compose -f Airflow/docker-compose.yml down -v
 
     echo ">> Shutting down Metabase"
-    docker compose -f Metabase/docker-compose.yml down -v
+    docker compose -f Metabase/docker-compose.yml
 
     echo ">> Shutting down MongoDB"
     docker compose -f MongoDB/docker-compose.yml down -v

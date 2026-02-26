@@ -6,7 +6,6 @@ from airflow.providers.http.operators.http import HttpOperator as SimpleHttpOper
 from datetime import datetime
 from airflow.operators.trigger_dagrun import TriggerDagRunOperator
 
-# --- PODEŠAVANJA ---
 FLINK_HOST = "http://flink-jobmanager-1:8081"
 JAR_PATH = "/opt/airflow/files/flink/transform-raw-data-job-1.0.jar"
 ENTRY_CLASS = "com.flink.streaming.TransformRawDataJob"
@@ -18,7 +17,6 @@ def upload_jar_to_flink():
         response = requests.post(f"{FLINK_HOST}/jars/upload", files=files)
         response.raise_for_status()
 
-        # Flink vraća npr: {"filename": "/tmp/flink-web-xxx/5898..._fajl.jar", "status": "success"}
         filename = response.json()['filename']
         jar_id = filename.split('/')[-1]
         return jar_id
@@ -31,17 +29,14 @@ with DAG(
     catchup=False,
 ) as dag:
 
-    # 1. Korak: Upload fajla i dobijanje JAR ID-a
     upload_task = PythonOperator(
         task_id='upload_transformation_jar',
         python_callable=upload_jar_to_flink
     )
 
-    # 2. Korak: Pokretanje posla koristeći ID iz prethodnog koraka
-    # Koristimo Jinja template {{ task_instance.xcom_pull(...) }} da uzmemo ID
     run_job = SimpleHttpOperator(
         task_id='run_flink_transformation_job',
-        http_conn_id='flink_http_default', # Definiši ovo u Airflow Connections (HTTP tip)
+        http_conn_id='flink_http_default',
         endpoint='/jars/{{ task_instance.xcom_pull(task_ids="upload_transformation_jar") }}/run',
         method='POST',
         data='{"entryClass": "' + ENTRY_CLASS + '", "parallelism": 1}',

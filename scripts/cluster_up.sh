@@ -41,10 +41,10 @@ docker exec -it airflow-airflow-apiserver-1 $cmd
 echo ">> Setting up Kafka objects"
 cmd='bash -c "/home/config/setupObjects.sh"'
 docker exec -it kafka-broker1-1 $cmd
-
-if [[ $REPLY =~ ^[Yy]$ ]]
-then
-    echo ">> Restoring Metabase database"
-    cmd='bash -c "/config/restoreDB.sh"'
-    docker exec -it mb-postgres $cmd
-fi
+#
+#if [[ $REPLY =~ ^[Yy]$ ]]
+#then
+#    echo ">> Restoring Metabase database"
+#    cmd='bash -c "/config/restoreDB.sh"'
+#    docker exec -it mb-postgres $cmd
+#fi

@@ -1,5 +1,5 @@
 from datetime import datetime
-from airflow.decorators import dag # Ispravljen import za Airflow 2.x
+from airflow.decorators import dag
 from airflow.models import Variable
 from airflow.providers.ssh.operators.ssh import SSHOperator
 

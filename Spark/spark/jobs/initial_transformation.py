@@ -9,8 +9,6 @@ def quiet_logs(sc):
   logger.LogManager.getLogger("org"). setLevel(logger.Level.ERROR)
   logger.LogManager.getLogger("akka").setLevel(logger.Level.ERROR)
 
-import re
-
 def parse_pgn(game):
     meta = {}
     moves = []

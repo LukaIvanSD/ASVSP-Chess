@@ -31,10 +31,12 @@ RUN wget -P /opt/flink/lib \
 
 
 
+# 1. Kreiraj folder za plugin
 RUN mkdir -p /opt/flink/plugins/flink-hdfs
-RUN wget -P /opt/flink/plugins/flink-hdfs \
-    https://repo.maven.apache.org/maven2/org/apache/flink/flink-hadoop-fs/1.20.3/flink-hadoop-fs-1.20.3.jar
 
+# 2. Skini JAR direktno U TAJ FOLDER
+RUN wget -P /opt/flink/plugins/flink-hdfs \
+    https://repo.maven.apache.org/maven2/org/apache/flink/flink-shaded-hadoop-2-uber/2.8.3-10.0/flink-shaded-hadoop-2-uber-2.8.3-10.0.jar
 
 ARG kafka_connector_version=4.0.0-2.0
 RUN wget -P /opt/flink/lib https://repo.maven.apache.org/maven2/org/apache/flink/flink-sql-connector-kafka/${kafka_connector_version}/flink-sql-connector-kafka-${kafka_connector_version}.jar

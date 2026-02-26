@@ -5,3 +5,8 @@
 /opt/kafka/bin/kafka-topics.sh --bootstrap-server localhost:9092 --create --if-not-exists --topic chess_ongoing_moves_transformed --replication-factor 2 --partitions 2
 /opt/kafka/bin/kafka-topics.sh --bootstrap-server localhost:9092 --create --if-not-exists --topic chess_ongoing_metadata_transformed --replication-factor 2 --partitions 2
 /opt/kafka/bin/kafka-topics.sh --bootstrap-server localhost:9092 --create --if-not-exists --topic chess_ongoing_moves_late --replication-factor 2 --partitions 2
+
+/opt/kafka/bin/kafka-topics.sh --bootstrap-server localhost:9092 --create --if-not-exists --topic chess_finished_games_transformed_blitz --replication-factor 2 --partitions 2
+/opt/kafka/bin/kafka-topics.sh --bootstrap-server localhost:9092 --create --if-not-exists --topic chess_finished_games_transformed_rapid --replication-factor 2 --partitions 2
+/opt/kafka/bin/kafka-topics.sh --bootstrap-server localhost:9092 --create --if-not-exists --topic chess_finished_games_transformed_bullet --replication-factor 2 --partitions 2
+/opt/kafka/bin/kafka-topics.sh --bootstrap-server localhost:9092 --create --if-not-exists --topic chess_finished_games_transformed_others --replication-factor 2 --partitions 2

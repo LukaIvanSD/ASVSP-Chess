@@ -34,12 +34,12 @@ def load_raw_data():
     loaded_file = load_data()
     checked_file = check_hdfs_file(loaded_file)
 
-    trigger_transform = TriggerDagRunOperator(
+    trigger_bronze_transform = TriggerDagRunOperator(
         task_id="load_real_time_data",
-        trigger_dag_id="load_real_time_raw_data",
+        trigger_dag_id="bronze_transformation_dag",
         wait_for_completion=False
     )
 
-    checked_file >> trigger_transform
+    checked_file >> trigger_bronze_transform
 
 load_raw_data()
