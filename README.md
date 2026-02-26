@@ -165,45 +165,45 @@ Svi dataset-ovi sadrže **osnovni PGN format**, koji uključuje ključne tagove:
 
 ## 5. Pitanja za paketnu obradu podataka (Batch processing)
 
-1. Prosečna dužina partije
+1. Profitabilnost otvaranja po Elo kategoriji
 
-Koji je prosečan broj poteza po partiji za posmatranog igrača i kako se on razlikuje u zavisnosti od tempa igre (bullet, blitz, rapid, classical)?
+Koja su otvaranja koja donose najveći procenat pobeda, poraza ili remija igračima u različitim Elo kategorijama
 
-2. Uticaj doba dana na ishod partije
+2.Uticaj doba dana na iznadprosečne rezultate
 
-Kako doba dana (jutro, popodne, veče, noć) utiče na procenat pobeda, poraza i remija igrača?
+U kojim delovima dana (jutro, dan, večе) igrač ostvaruje bolji procenat pobeda od svog globalnog prosečnog win rate-a?
 
-3. Promena popularnosti otvaranja kroz vreme
+3. Najuspešnije otvaranja po tipu partije
 
-Kako se popularnost određenih šahovskih otvaranja menjala kroz godine na globalnom nivou i kod posmatranog igrača?
+Koja otvaranja igrači koriste u različitim tipovima partija (bullet, blitz, rapid, classical) i koja imaju iznadprosečan win rate u odnosu na globalni prosečni win rate za taj tip partije?
 
 4. Najčešća otvaranja igrača i uspešnost
 
 Kojih je top 5 najčešće korišćenih otvaranja posmatranog igrača i koliki je procenat pobeda, poraza i remija za svako od njih?
 
-5. Uticaj niskog vremena na ishod
+5. Popularnost otvaranja u poslednjih 5 dana
 
-U kom procentu partija igrač gubi kada mu preostane manje od određenog broja sekundi (npr. <10s, <5s) i koliko često uspeva da preživi takve situacije?
+Koja otvaranja su bila najčešće korišćena u poslednjih 5 dana i kako se raspodeljuju rezultati partija? 
 
-6. Preferencije u razmeni figura
+6. Najveći ELO dobitak u prozoru partija
 
-Da li igrač u završnici češće zadržava par lovaca ili par konja, i kako ta preferencija utiče na ishod partije?
+Koji je najveći kumulativni ELO dobitak igrača u prozoru od n partija?
 
-7. Realizacija mat pretnji
+7. Analiza performansi figura igrača
 
-U kojem procentu slučajeva igrač uspešno realizuje pozicije u kojima engine evaluira forsirani mat u nekoliko poteza, i koliki je procenat “izgubljenih mat šansi”?
+Koje figure daju igraču najbolji i najgori skor u partijama?
 
-8. Uspešnost otvaranja prema evaluaciji
+8. Loše serije figure igrača
 
-Koja otvaranja najčešće dovode do stabilne prednosti (≥ +0.5) za belog ili crnog u prvih 10 poteza?
+Koje figure imaju najduže negativne serije (score ≤ 0) i kako te serije utiču na ishod partija?
 
-9. Rokada i njen uticaj na ishod
+9. Trend partija po stilu igre
 
-Koliko često igrač radi malu, veliku ili uopšte ne radi rokadu, u kojoj fazi partije (rana, srednja, kasna), i kako te odluke utiču na procenat pobeda?
+Kako se igre igrača raspoređuju po stilovima igre (klasifikacijama: Divlje, Glatke, Tesne, Oštre, Uravnotežene) i kako stil utiče na ishod partija?
 
-10. Kritične greške tokom partije
+10. Najduži nizovi pobeda i poraza
 
-Koliki procenat kritičnih grešaka (pad evaluacije >1 poen) igrač pravi u prvoj polovini partije u odnosu na drugu polovinu?
+Koji su najduži nizovi pobeda i najduži nizovi poraza za svakog igrača i kada su se oni dogodili?
 
 11. Win/Lose streak (tilt analiza)
 
@@ -229,39 +229,27 @@ Kako se raspodeljuju načini završetka partija koje je igrač pobedio, remizira
 
 ## 6. Pitanja za obradu podataka u realnom vremenu (Stream processing)
 
-1. Trenutni win/lose streak
+1. Trenutni win/lose streak u poslednjih n dana
 
-Da li je igrač trenutno u win-streaku ili lose-streaku i kako se to razlikuje od njegovog istorijskog proseka?
+Da li je igrač trenutno u win-streaku ili lose-streaku?
 
-2. Promena repertoara otvaranja
+2. Rokada i njen uticaj na ishod poslednjih n dana
 
-Koja su otvaranja u poslednjih nekoliko partija postala značajno češća u odnosu na raniji period?
+Kako izvođenje rokade (kratke ili duge) utiče na procenat pobeda, poraza i remija igrača u poslednjih n partija ili u odabranom vremenskom periodu?
 
-3. Realizacija prednosti u novijem periodu
+3. Uticaj šahova na ishod partije u poslednjih n dana
 
-Da li igrač u poslednjih nekoliko partija češće ili ređe uspeva da realizuje pozicionu prednost u odnosu na istorijske podatke?
+Kako broj odigranih šahova utiče na procenat pobeda igrača i da li određene figure ili faze partije donose veću uspešnost?
 
-4. Vreme igranja u skorije vreme
+4. Najbolja sekvenca poteza u uživo partiji
 
-Kako doba dana i dan u nedelji utiču na rezultate igrača u poslednjih nekoliko partija u poređenju sa istorijom?
+Kako najbolja sekvenca poteza crnog igrača (bestSequence) utiče na tok partije i koliki je njen doprinos promeni evaluacije u partiji uživo?
 
-5. Kvalitet poteza u skorije vreme
+5. Analiza kontrole polja u uživo partiji
 
-Kako se raspodela kvaliteta poteza (najbolji, odličan, dobar, slab, greška) promenila u poslednjih nekoliko partija?
+Kako raspodela posećenih polja pokazuje strategiju kretanja figura igrača u uživo partiji? 
 
-6. Aktivnost figura po fazama igre
+6. Kvalitet poteza po figurama u uživo partiji
 
-Kako se promenio broj poteza sa pojedinim figurama (kraljica, topovi, laki oficiri) u otvaranju, sredini i završnici u poslednjem periodu?
-
-7. Kritične greške
-
-Da li se raspodela kritičnih grešaka po fazama partije u poslednjih nekoliko partija razlikuje u odnosu na istorijske podatke?
-
-8. Pronađeni matovi
-
-Kako se broj pronađenih matova u 1, 2, 3, 4 i 5+ poteza u poslednjih nekoliko partija poredi sa istorijskim periodom?
-
-9. Ishod partija
-
-Da li se način završetka partija (predaja, istek vremena, šah-mat) u poslednjih nekoliko partija razlikuje u odnosu na istorijske obrasce?
+Kako se kvalitet poteza razlikuje po tipu figure i koje figure najviše utiču na stabilnost partije u uživo partiji?
 
