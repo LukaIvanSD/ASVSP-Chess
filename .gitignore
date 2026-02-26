@@ -3,3 +3,4 @@ asvsp-project
 Airflow/logs/
 Airflow/plugins/
 Airflow/files/chessData/
+Airflow/.env

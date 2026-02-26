@@ -4,10 +4,11 @@ import re
 from kafka import KafkaProducer
 from datetime import datetime
 import time
+from os
 
 conn = http.client.HTTPSConnection("lichess.org")
-
-headers = { 'Authorization': "Bearer lip_fBOyc6ymnq1sX8yhbB6H" }
+token = os.getenv("LICHESS_API_TOKEN")
+headers = { 'Authorization': f"Bearer {token}" }
 
 users = ['AAlmeidaTX','Chesssknock', 'Odirovski', 'novik70', 'Fleetwood_Mac', 'Revolverman', 'MassterofMayhem', 'morus22', 'JoeAssaad', 'imdejong']
 
